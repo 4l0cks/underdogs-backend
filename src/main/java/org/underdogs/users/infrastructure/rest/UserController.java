@@ -61,6 +61,7 @@ class UserController {
         .orElse(ResponseEntity.notFound().build());
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @PostMapping
   ResponseEntity<Void> createUser(@Valid @RequestBody CreateUserRequest request) {
     final var userId = createUser.handle(request);
